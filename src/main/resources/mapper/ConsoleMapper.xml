@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiaovka.demo.mapper.ConsoleMappper">
+    <!--如果collection 是map 则index对应map中的key-->
+    <!--如果collection 是array 或list 则index为索引-->
+    <!--${}直接输出字符串  #{}先替换成？再传入值-->
+    <select id="selectByMap" resultType="String">
+        select real_name from console_user where
+        <foreach collection="map" separator="and" index="key" item="value">
+            ${key} = #{value}
+        </foreach>
+    </select>
+</mapper>
